@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileText, CheckCircle, AlertTriangle, Settings, HardDrive, RefreshCw, ShieldCheck, Building, MapPin, FileDigit, ArrowLeft, Save } from 'lucide-react';
+import { FileText, CheckCircle, AlertTriangle, Settings, HardDrive, RefreshCw, ShieldCheck, Building, MapPin, FileDigit, ArrowLeft, Save, Tag } from 'lucide-react';
 
 // Tipos para o nosso protótipo
 type Invoice = {
@@ -290,6 +290,56 @@ export default function App() {
                     <input type="number" defaultValue="154" className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" required />
                   </div>
                 </div>
+              </section>
+
+              {/* Seção: Tributação Padrão de Produtos */}
+              <section>
+                <h3 className="text-md font-semibold text-gray-800 mb-4 flex items-center gap-2 border-b pb-2">
+                  <Tag className="w-5 h-5 text-blue-500" />
+                  Tributação Padrão de Produtos/Serviços
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">CFOP (Dentro do Estado)</label>
+                    <input type="text" defaultValue="5102" className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="Ex: 5102" required />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">CFOP (Fora do Estado)</label>
+                    <input type="text" defaultValue="6102" className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="Ex: 6102" required />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">NCM Padrão</label>
+                    <input type="text" defaultValue="00000000" className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="Ex: 85171231" required />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Origem do Produto</label>
+                    <select className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white">
+                      <option value="0">0 - Nacional</option>
+                      <option value="1">1 - Estrangeira (Importação direta)</option>
+                      <option value="2">2 - Estrangeira (Mercado interno)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">CSOSN Padrão (ICMS)</label>
+                    <select className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white">
+                      <option value="102">102 - Tributada pelo Simples Nacional sem permissão de crédito</option>
+                      <option value="103">103 - Isenção do ICMS no Simples Nacional</option>
+                      <option value="400">400 - Não tributada pelo Simples Nacional</option>
+                      <option value="500">500 - ICMS cobrado anteriormente por ST</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">CST PIS/COFINS</label>
+                    <select className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white">
+                      <option value="49">49 - Outras Operações de Saída</option>
+                      <option value="99">99 - Outras Operações</option>
+                      <option value="01">01 - Operação Tributável</option>
+                    </select>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-500 mt-3">
+                  * Estes valores serão usados automaticamente caso o produto da Ordem de Serviço não tenha tributação específica cadastrada.
+                </p>
               </section>
 
               <div className="pt-4 flex justify-end gap-3 border-t border-gray-100">
