@@ -1,0 +1,5 @@
+{
+  "name": "Módulo Fiscal MapOS",
+  "description": "Protótipo de Módulo Fiscal para integração com MapOS e Certificado A3",
+  "requestFramePermissions": []
+}
